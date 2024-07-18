@@ -5,24 +5,30 @@ export const Hero = (): JSX.Element => {
   return (
     <Parallax
       speed={-10}
-      className="w-full flex justify-between mt-8 items-center"
+      className="w-full flex flex-col lg:flex-row justify-between mt-8 items-center"
     >
-      <div className="w-1/2 flex flex-col gap-8">
-        <p className="font-extrabold text-5xl">
+      <div className="w-full lg:w-1/2 flex flex-col gap-8 p-4 lg:p-0">
+        <p className="font-extrabold text-3xl lg:text-5xl">
           Discover Your Path to Global Education
         </p>
-        <p className="text-lg">
+        <p className="text-base lg:text-lg lg:text-left">
           At unbounded.prep, we are revolutionizing the way students prepare for
           university admissions abroad. Our platform connects you directly with
           students from top universities around the world, enabling personalized
           guidance tailored to your educational aspirations.
         </p>
-        <Button className="w-fit text-lg p-6" size="middle">
-          Book an appointment
-        </Button>
+        <div className="flex justify-start">
+          <Button className="w-fit text-lg p-4 lg:p-6" size="middle">
+            Book an appointment
+          </Button>
+        </div>
       </div>
-      <div className="w-2/4">
-        <img src="images/graphics/admission.svg" />
+      <div className="w-full lg:w-2/4 p-4 lg:p-0 flex justify-center lg:justify-end">
+        <img
+          src="images/graphics/admission.svg"
+          className="max-w-full h-auto"
+          alt="Admission graphic"
+        />
       </div>
     </Parallax>
   );

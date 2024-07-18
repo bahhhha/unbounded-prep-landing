@@ -11,19 +11,19 @@ import { Footer } from "../../sections/home/Footer";
 const HomePage = (): JSX.Element => {
   useGate(HomeGate);
   return (
-    <div className="flex flex-col items-center overflow-x-hidden">
+    <div className="flex flex-col items-center overflow-x-shidden">
       <div className="flex flex-col w-4/5 items-center">
-        <Fade>
+        <Fade triggerOnce>
           <Header />
           <Hero />
         </Fade>
-        <Slide>
+        <Slide triggerOnce>
           <HowItWorks />
         </Slide>
-        <Slide>
+        <Slide triggerOnce>
           <Services />
         </Slide>
-        <Fade>
+        <Fade triggerOnce>
           <Mentors />
         </Fade>
         <FAQ />

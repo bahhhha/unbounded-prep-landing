@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Card, Typography, Button } from "antd";
+import { Card, Button } from "antd";
 import { motion, AnimatePresence } from "framer-motion";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-
-const { Title } = Typography;
+import { useSwipeable } from "react-swipeable";
 
 const services = [
   {
@@ -45,10 +44,19 @@ export const Services = () => {
     );
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   return (
-    <div className="w-full h-full flex items-center justify-center mt-8">
-      <Button icon={<LeftOutlined />} onClick={handlePrev} />
-      <div className="flex-grow max-w-full max-h-full mx-4">
+    <div className="w-full flex items-center justify-center mt-8 md:px-4">
+      <div className="hidden md:block">
+        <Button icon={<LeftOutlined />} onClick={handlePrev} />
+      </div>
+      <div {...swipeHandlers} className="flex-grow max-w-full md:mx-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -57,24 +65,31 @@ export const Services = () => {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.2 }}
           >
-            <Card className="border-gray-200 w-full h-full px-32">
-              <div className="w-full h-full flex items-center justify-between">
-                <div className="w-1/2">
-                  <Title level={1}>{services[currentIndex].title}</Title>
-                  <p className="text-lg">
+            <Card className="border-gray-200 w-full h-full px-8 py-6 md:px-16 md:py-12">
+              <div className="w-full h-full flex flex-col md:flex-row items-center justify-between">
+                <div className="w-full h-full md:w-1/2">
+                  <p className="font-bold text-lg md:text-xl">
+                    {services[currentIndex].title}
+                  </p>
+                  <p className="text-base md:text-lg">
                     {services[currentIndex].description}
                   </p>
                 </div>
                 <img
                   src={services[currentIndex].imageSrc}
-                  className="w-96 h-96"
+                  className="w-64 h-64 md:w-96 md:h-96 mt-4 md:mt-0"
+                  alt={services[currentIndex].title}
                 />
               </div>
             </Card>
           </motion.div>
         </AnimatePresence>
       </div>
-      <Button icon={<RightOutlined />} onClick={handleNext} />
+      <div className="hidden md:block">
+        <Button icon={<RightOutlined />} onClick={handleNext} />
+      </div>
     </div>
   );
 };
+
+export default Services;

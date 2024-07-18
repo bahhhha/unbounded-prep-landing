@@ -8,7 +8,7 @@ import {
 
 export const Footer = (): JSX.Element => {
   return (
-    <div className="bg-zinc-900 w-screen items-center p-4 flex justify-between gap-4">
+    <div className="bg-zinc-900 w-screen flex-col-reverse md:flex-row text-lg items-center p-4 flex justify-between gap-4">
       <div className="flex gap-4 text-sm">
         <a
           href="mailto:arthur.muratovich@gmail.com"
