@@ -49,6 +49,7 @@ const faqData = [
 
 export const FAQ = (): JSX.Element => (
   <div className="w-full my-16">
+    <p className="font-bold text-3xl mb-4">FAQ</p>
     <Collapse accordion className="w-full border-gray-200 bg-white">
       {faqData.map(({ key, question, answer }) => (
         <Panel header={question} key={key} className="text-lg w-full">

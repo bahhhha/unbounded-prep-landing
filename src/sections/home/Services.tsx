@@ -65,7 +65,10 @@ export const Services = () => {
                     {services[currentIndex].description}
                   </p>
                 </div>
-                <img src={services[currentIndex].imageSrc} className="w-96" />
+                <img
+                  src={services[currentIndex].imageSrc}
+                  className="w-96 h-96"
+                />
               </div>
             </Card>
           </motion.div>
