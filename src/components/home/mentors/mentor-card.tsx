@@ -22,7 +22,7 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row text-sm w-full h-full relative p-4 border shadow-sm rounded-md">
+    <div className="flex flex-col items-center lg:flex-row text-sm w-full h-full relative p-4 border shadow-sm rounded-md">
       <div className="md:absolute md:top-4 md:right-4 py-2 md:py-0">
         <Rate
           count={5}

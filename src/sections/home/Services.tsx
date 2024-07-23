@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, Button } from "antd";
 import { motion, AnimatePresence } from "framer-motion";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -33,7 +33,6 @@ const services = [
 
 export const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoSwiping, setIsAutoSwiping] = useState(true);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
@@ -46,42 +45,16 @@ export const Services = () => {
   };
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      handleNext();
-      setIsAutoSwiping(false);
-    },
-    onSwipedRight: () => {
-      handlePrev();
-      setIsAutoSwiping(false);
-    },
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
 
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-    if (isAutoSwiping) {
-      timer = setTimeout(() => {
-        handleNext();
-      }, 3000);
-    }
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [currentIndex, isAutoSwiping]);
-
-  const handleUserInteraction = (callback: () => void) => {
-    setIsAutoSwiping(false);
-    callback();
-  };
-
   return (
     <div className="w-full flex items-center justify-center mt-8 md:px-4">
       <div className="hidden md:block">
-        <Button
-          icon={<LeftOutlined />}
-          onClick={() => handleUserInteraction(handlePrev)}
-        />
+        <Button icon={<LeftOutlined />} onClick={handlePrev} />
       </div>
       <div {...swipeHandlers} className="flex-grow max-w-full md:mx-4">
         <AnimatePresence mode="wait">
@@ -92,13 +65,13 @@ export const Services = () => {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.2 }}
           >
-            <Card className="border-gray-200 w-full h-full px-8 py-6 md:px-16 md:py-12">
+            <Card className="border-gray-200 h-[35rem] w-full px-8 py-6 md:px-16 md:py-12">
               <div className="w-full h-full flex flex-col md:flex-row items-center justify-between">
                 <div className="w-full h-full md:w-1/2">
-                  <p className="font-bold text-lg md:text-xl">
+                  <p className="font-bold text-lg md:text-2xl">
                     {services[currentIndex].title}
                   </p>
-                  <p className="text-base md:text-lg">
+                  <p className="text-base my-2 md:text-lg">
                     {services[currentIndex].description}
                   </p>
                 </div>
@@ -113,10 +86,7 @@ export const Services = () => {
         </AnimatePresence>
       </div>
       <div className="hidden md:block">
-        <Button
-          icon={<RightOutlined />}
-          onClick={() => handleUserInteraction(handleNext)}
-        />
+        <Button icon={<RightOutlined />} onClick={handleNext} />
       </div>
     </div>
   );

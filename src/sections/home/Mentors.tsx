@@ -6,9 +6,7 @@ export const Mentors = (): JSX.Element => {
   const mentors = useUnit($mentors);
   return mentors && mentors.length > 0 ? (
     <div>
-      <p className="font-bold text-xl md:text-3xl my-4">
-        Explore available mentors
-      </p>
+      <p className="font-bold text-3xl my-8">Explore available mentors</p>
       <div className="flex flex-col md:flex-row gap-4 w-full my-4">
         {/* {mentors.map((mentor) => ( */}
         <MentorCard mentor={mentors[0]} />
