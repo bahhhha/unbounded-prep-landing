@@ -23,7 +23,7 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
 
   return (
     <div className="flex flex-col items-center lg:flex-row text-sm w-full h-full relative p-4 border shadow-sm rounded-md">
-      <div className="md:absolute md:top-4 md:right-4 py-2 md:py-0">
+      <div className="md:absolute hidden lg:block md:top-4 md:right-4 py-2 md:py-0">
         <Rate
           count={5}
           className="text-yellow-500"
@@ -55,7 +55,16 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
           />
         </div>
       </div>
-      <div className="flex-grow p-4">
+      <div className="block md:hidden md:absolute md:top-4 md:right-4 py-2 md:py-0">
+        <Rate
+          count={5}
+          className="text-yellow-500"
+          allowHalf
+          value={mentor.rating}
+          disabled
+        />
+      </div>
+      <div className="flex-grow px-4">
         <p className="font-bold text-lg">{mentor.name}</p>
         <p className="mt-2">{mentor.bio}</p>
         <div className="mt-4">
