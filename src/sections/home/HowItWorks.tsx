@@ -26,7 +26,9 @@ export const HowItWorks = (): JSX.Element => {
           key={index}
           className="flex flex-col gap-2 text-lg border border-gray-200 shadow-sm rounded-lg p-4 w-full lg:w-1/3"
         >
-          <p className="font-bold text-xl">{point.title}</p>
+          <p className="font-bold text-xl">
+            {index + 1}. {point.title}
+          </p>
           <p className="text-gray-700">{point.description}</p>
         </Card>
       ))}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, Button } from "antd";
 import { motion, AnimatePresence } from "framer-motion";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -33,6 +33,7 @@ const services = [
 
 export const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoSwiping, setIsAutoSwiping] = useState(true);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
@@ -45,16 +46,42 @@ export const Services = () => {
   };
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: handleNext,
-    onSwipedRight: handlePrev,
+    onSwipedLeft: () => {
+      handleNext();
+      setIsAutoSwiping(false);
+    },
+    onSwipedRight: () => {
+      handlePrev();
+      setIsAutoSwiping(false);
+    },
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
 
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    if (isAutoSwiping) {
+      timer = setTimeout(() => {
+        handleNext();
+      }, 3000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [currentIndex, isAutoSwiping]);
+
+  const handleUserInteraction = (callback: () => void) => {
+    setIsAutoSwiping(false);
+    callback();
+  };
+
   return (
     <div className="w-full flex items-center justify-center mt-8 md:px-4">
       <div className="hidden md:block">
-        <Button icon={<LeftOutlined />} onClick={handlePrev} />
+        <Button
+          icon={<LeftOutlined />}
+          onClick={() => handleUserInteraction(handlePrev)}
+        />
       </div>
       <div {...swipeHandlers} className="flex-grow max-w-full md:mx-4">
         <AnimatePresence mode="wait">
@@ -86,7 +113,10 @@ export const Services = () => {
         </AnimatePresence>
       </div>
       <div className="hidden md:block">
-        <Button icon={<RightOutlined />} onClick={handleNext} />
+        <Button
+          icon={<RightOutlined />}
+          onClick={() => handleUserInteraction(handleNext)}
+        />
       </div>
     </div>
   );

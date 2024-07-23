@@ -8,26 +8,35 @@ import { HomeGate } from "../../features/get-mentors/model";
 import { useGate } from "effector-react";
 import { Mentors } from "../../sections/home/Mentors";
 import { Footer } from "../../sections/home/Footer";
+
 const HomePage = (): JSX.Element => {
   useGate(HomeGate);
   return (
-    <div className="flex flex-col items-center overflow-x-shidden">
+    <div className="flex flex-col items-center overflow-x-hidden">
       <div className="flex flex-col w-4/5 items-center">
         <Fade triggerOnce>
           <Header />
           <Hero />
         </Fade>
         <Slide triggerOnce>
-          <HowItWorks />
+          <div id="how-it-works">
+            <HowItWorks />
+          </div>
         </Slide>
         <Slide triggerOnce>
-          <Services />
+          <div id="services">
+            <Services />
+          </div>
         </Slide>
         <Fade triggerOnce>
-          <Mentors />
+          <div id="mentors">
+            <Mentors />
+          </div>
         </Fade>
         <FAQ />
-        <Footer />
+        <div id="contact">
+          <Footer />
+        </div>
       </div>
     </div>
   );

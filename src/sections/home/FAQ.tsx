@@ -48,7 +48,7 @@ const faqData = [
 ];
 
 export const FAQ = (): JSX.Element => (
-  <div className="w-full my-16">
+  <div className="w-full my-16" id="faq">
     <p className="font-bold text-3xl mb-4">FAQ</p>
     <Collapse accordion className="w-full border-gray-200 bg-white">
       {faqData.map(({ key, question, answer }) => (
