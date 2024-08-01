@@ -21,16 +21,25 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
     }
   };
 
+  // const truncateBio = (bio: string, maxLength: number) => {
+  //   if (bio.length <= maxLength) {
+  //     return bio;
+  //   }
+  //   return `${bio.slice(0, maxLength)}...`;
+  // };
+
   return (
     <div className="flex flex-col items-center lg:flex-row text-sm w-full h-full relative p-4 border shadow-sm rounded-md">
       <div className="md:absolute hidden lg:block md:top-4 md:right-4 py-2 md:py-0">
-        <Rate
-          count={5}
-          className="text-yellow-500"
-          allowHalf
-          value={mentor.rating}
-          disabled
-        />
+        {mentor.rating ? (
+          <Rate
+            count={5}
+            className="text-yellow-500"
+            allowHalf
+            value={mentor.rating}
+            disabled
+          />
+        ) : null}
       </div>
       <div className="flex-shrink-0 relative mb-4 lg:mb-0">
         <img
@@ -40,7 +49,7 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
         />
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 flex items-center space-x-2 p-1 rounded-full">
           <ReactCountryFlag
-            countryCode="kz"
+            countryCode={mentor.university_country_flag}
             svg
             style={{
               width: "2em",
@@ -56,21 +65,23 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
         </div>
       </div>
       <div className="block md:hidden md:absolute md:top-4 md:right-4 py-2 md:py-0">
-        <Rate
-          count={5}
-          className="text-yellow-500"
-          allowHalf
-          value={mentor.rating}
-          disabled
-        />
+        {mentor.rating ? (
+          <Rate
+            count={5}
+            className="text-yellow-500"
+            allowHalf
+            value={mentor.rating}
+            disabled
+          />
+        ) : null}
       </div>
       <div className="flex-grow px-4">
         <p className="font-bold text-lg">{mentor.name}</p>
-        <p className="mt-2">{mentor.bio}</p>
+        <p className="mt-2 text-xs">{mentor.bio}</p>
         <div className="mt-4">
           <p>
-            <span className="font-bold">Origin:</span>{" "}
-            {mentor.origin_country_name}
+            <span className="font-bold">Location:</span>{" "}
+            {mentor.university_city_name}, {mentor.university_country_name}
           </p>
           <p>
             <span className="font-bold">University:</span> {mentor.university}
@@ -78,6 +89,26 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
           <p>
             <span className="font-bold">Major:</span> {mentor.major}
           </p>
+          <div className="mt-4 flex gap-4">
+            {mentor.gpa ? (
+              <p>
+                <span className="font-bold text-yellow-500">GPA:</span>{" "}
+                {mentor.gpa.toPrecision(3)}
+              </p>
+            ) : null}
+            {mentor.ielts_score ? (
+              <p>
+                <span className="font-bold text-yellow-600">IELTS:</span>{" "}
+                {mentor.ielts_score}
+              </p>
+            ) : null}
+            {mentor.sat_score ? (
+              <p>
+                <span className="font-bold text-yellow-700">SAT:</span>{" "}
+                {mentor.sat_score}
+              </p>
+            ) : null}
+          </div>
           <div className="flex items-center justify-between mt-4">
             <div className="flex gap-2 items-center">
               {instagram && (
