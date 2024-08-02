@@ -45,7 +45,7 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
         <img
           src={mentor.profile_image_url}
           alt={mentor.name}
-          className="rounded-md w-64 h-64 object-cover"
+          className="rounded-md w-48 h-48 object-cover"
         />
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 flex items-center space-x-2 p-1 rounded-full">
           <ReactCountryFlag

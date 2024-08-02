@@ -40,7 +40,7 @@ export const Mentors = (): JSX.Element => {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 gap-4 items-center"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
