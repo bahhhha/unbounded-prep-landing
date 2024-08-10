@@ -1,0 +1,18 @@
+{
+  "essayReviews": {
+    "title": "Essay Reviews",
+    "description": "Get personalized feedback on your admission essays from students who’ve been there. Our mentors understand what top universities are looking for and can help you craft a compelling narrative."
+  },
+  "applicationAssistance": {
+    "title": "Application Assistance",
+    "description": "Navigating the Common App and other application portals can be confusing. Our mentors can guide you through the process, ensuring you meet all the requirements and deadlines."
+  },
+  "universitySelectionAdvice": {
+    "title": "University Selection Advice",
+    "description": "Choosing the right university is crucial. Get advice based on real student experiences and data-driven insights to match your academic and personal preferences with the best options."
+  },
+  "scholarshipGuidance": {
+    "title": "Scholarship Guidance",
+    "description": "Learn about scholarship opportunities and get help with applications to minimize your education costs."
+  }
+}

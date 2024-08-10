@@ -21,7 +21,7 @@ function App() {
       <ConfigProvider
         theme={{
           token: {
-            fontFamily: "Poppins",
+            fontFamily: "Noto Sans",
           },
           components: {
             Button: {

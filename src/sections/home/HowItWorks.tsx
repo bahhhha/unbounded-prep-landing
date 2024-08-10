@@ -1,21 +1,20 @@
 import { Card } from "antd";
+import { useTranslation } from "react-i18next";
 
 export const HowItWorks = (): JSX.Element => {
+  const { t } = useTranslation("howItWorks");
   const data = [
     {
-      title: "Explore Student Profiles",
-      description:
-        "Browse through a list of profile cards from our student mentors enrolled in the world's leading universities.",
+      title: t("explore"),
+      description: t("exploreDesc"),
     },
     {
-      title: "Book Your Call",
-      description:
-        "Select the mentor you resonate with and schedule a one-on-one consultation at your convenience.",
+      title: t("book"),
+      description: t("bookDesc"),
     },
     {
-      title: "Get Personalized Guidance",
-      description:
-        "Receive tailored advice on everything from application strategies to essay writing and interview preparation.",
+      title: t("guidance"),
+      description: t("guidanceDesc"),
     },
   ];
 

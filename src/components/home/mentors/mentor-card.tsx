@@ -8,25 +8,26 @@ import {
   GlobalOutlined,
   RightCircleOutlined,
 } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 interface MentorCardProps {
   mentor: Mentor;
 }
 
 export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
+  const { t, ready } = useTranslation("mentorCard");
+
+  if (!ready) {
+    return <div></div>;
+  }
+
   const { linkedin, instagram, telegram, borderless } = mentor.social_links;
+
   const handleBook = () => {
     if (mentor.calendly_url) {
       window.open(mentor.calendly_url, "_blank");
     }
   };
-
-  // const truncateBio = (bio: string, maxLength: number) => {
-  //   if (bio.length <= maxLength) {
-  //     return bio;
-  //   }
-  //   return `${bio.slice(0, maxLength)}...`;
-  // };
 
   return (
     <div className="flex flex-col items-center lg:flex-row text-sm w-full h-full relative p-4 border shadow-sm rounded-md">
@@ -80,14 +81,15 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
         <p className="mt-2 text-xs">{mentor.bio}</p>
         <div className="mt-4">
           <p>
-            <span className="font-bold">Location:</span>{" "}
+            <span className="font-bold">{t("location")}:</span>{" "}
             {mentor.university_city_name}, {mentor.university_country_name}
           </p>
           <p>
-            <span className="font-bold">University:</span> {mentor.university}
+            <span className="font-bold">{t("university")}:</span>{" "}
+            {mentor.university}
           </p>
           <p>
-            <span className="font-bold">Major:</span> {mentor.major}
+            <span className="font-bold">{t("major")}:</span> {mentor.major}
           </p>
           <div className="mt-4 flex gap-4">
             {mentor.gpa ? (
@@ -150,7 +152,7 @@ export const MentorCard = ({ mentor }: MentorCardProps): JSX.Element => {
                 onClick={handleBook}
                 className="text-lg"
               >
-                Book
+                {t("book")}
               </Button>
             </div>
           </div>

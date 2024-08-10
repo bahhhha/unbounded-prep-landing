@@ -1,0 +1,31 @@
+{
+  "title": "FAQ",
+  "question1": {
+    "title": "What is unbounded.prep?",
+    "description": "Unbounded.prep is a platform designed to connect prospective students with experienced mentors from top global universities, providing direct and affordable access to admission guidance."
+  },
+  "question2": {
+    "title": "How do I choose a mentor?",
+    "description": "You can choose a mentor based on their university, area of study, and the specific help they offer. Each profile card provides detailed information to help you make the best choice for your needs."
+  },
+  "question3": {
+    "title": "What can I expect from a consultation?",
+    "description": "Each session is tailored to your specific questions and requirements, whether it's understanding the application process, receiving feedback on your essays, or preparing for interviews."
+  },
+  "question4": {
+    "title": "How much does it cost?",
+    "description": "Our platform offers a transparent pricing model where you pay per consultation with no hidden fees or mandatory subscriptions."
+  },
+  "question5": {
+    "title": "How does the payment process work?",
+    "description": "During the scheduling process, you'll be asked to share your contact information. A manager from our team will then reach out to you to facilitate payment through Kaspi. This ensures that all transactions are handled securely and efficiently."
+  },
+  "question6": {
+    "title": "What if I need to reschedule or cancel a session?",
+    "description": "You can reschedule or cancel your session by contacting our support team at least 24 hours in advance. This allows us to offer the slot to other students and manage our mentors' schedules effectively."
+  },
+  "question7": {
+    "title": "How do I provide feedback about my sessions?",
+    "description": "After each session, you'll have the opportunity to provide feedback about your experience. This helps us continually improve our services and ensure our mentors are meeting your expectations."
+  }
+}

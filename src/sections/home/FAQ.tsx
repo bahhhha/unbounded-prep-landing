@@ -1,61 +1,59 @@
 import { Collapse } from "antd";
+import { useTranslation } from "react-i18next";
 
-const { Panel } = Collapse;
+export const FAQ = (): JSX.Element => {
+  const { t, ready } = useTranslation("faq");
 
-const faqData = [
-  {
-    key: "1",
-    question: "What is unbounded.prep?",
-    answer:
-      "Unbounded.prep is a platform designed to connect prospective students with experienced mentors from top global universities, providing direct and affordable access to admission guidance.",
-  },
-  {
-    key: "2",
-    question: "How do I choose a mentor?",
-    answer:
-      "You can choose a mentor based on their university, area of study, and the specific help they offer. Each profile card provides detailed information to help you make the best choice for your needs.",
-  },
-  {
-    key: "3",
-    question: "What can I expect from a consultation?",
-    answer:
-      "Each session is tailored to your specific questions and requirements, whether it's understanding the application process, receiving feedback on your essays, or preparing for interviews.",
-  },
-  {
-    key: "4",
-    question: "How much does it cost?",
-    answer:
-      "Our platform offers a transparent pricing model where you pay per consultation with no hidden fees or mandatory subscriptions.",
-  },
-  {
-    key: "5",
-    question: "How does the payment process work?",
-    answer:
-      "During the scheduling process, you'll be asked to share your contact information. A manager from our team will then reach out to you to facilitate payment using Kaspi. This ensures that all transactions are handled securely and efficiently.",
-  },
-  {
-    key: "6",
-    question: "What if I need to reschedule or cancel a session?",
-    answer:
-      "You can reschedule or cancel your session by contacting our support team at least 24 hours in advance. This allows us to offer the slot to other students and manage our mentors' schedules effectively.",
-  },
-  {
-    key: "7",
-    question: "How do I provide feedback about my sessions?",
-    answer:
-      "After each session, you'll have the opportunity to provide feedback about your experience. This helps us to continually improve our services and ensure our mentors are meeting your expectations.",
-  },
-];
+  if (!ready) {
+    return <div>Loading...</div>;
+  }
 
-export const FAQ = (): JSX.Element => (
-  <div className="w-full my-16" id="faq">
-    <p className="font-bold text-3xl mb-4">FAQ</p>
-    <Collapse accordion className="w-full border-gray-200 bg-white">
-      {faqData.map(({ key, question, answer }) => (
-        <Panel header={question} key={key} className="text-lg w-full">
-          <p>{answer}</p>
-        </Panel>
-      ))}
-    </Collapse>
-  </div>
-);
+  const faqItems = [
+    {
+      key: "1",
+      label: t("question1.title"),
+      children: <p>{t("question1.description")}</p>,
+    },
+    {
+      key: "2",
+      label: t("question2.title"),
+      children: <p>{t("question2.description")}</p>,
+    },
+    {
+      key: "3",
+      label: t("question3.title"),
+      children: <p>{t("question3.description")}</p>,
+    },
+    {
+      key: "4",
+      label: t("question4.title"),
+      children: <p>{t("question4.description")}</p>,
+    },
+    {
+      key: "5",
+      label: t("question5.title"),
+      children: <p>{t("question5.description")}</p>,
+    },
+    {
+      key: "6",
+      label: t("question6.title"),
+      children: <p>{t("question6.description")}</p>,
+    },
+    {
+      key: "7",
+      label: t("question7.title"),
+      children: <p>{t("question7.description")}</p>,
+    },
+  ];
+
+  return (
+    <div className="w-full my-16" id="faq">
+      <p className="font-bold text-3xl mb-4">{t("title")}</p>
+      <Collapse
+        accordion
+        items={faqItems}
+        className="w-full border-gray-200 bg-white"
+      />
+    </div>
+  );
+};

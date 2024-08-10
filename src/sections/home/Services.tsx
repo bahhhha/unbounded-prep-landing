@@ -3,35 +3,32 @@ import { Card, Button } from "antd";
 import { motion, AnimatePresence } from "framer-motion";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useSwipeable } from "react-swipeable";
-
-const services = [
-  {
-    title: "Essay Reviews",
-    description:
-      "Get personalized feedback on your admission essays from students who’ve been there. Our mentors understand what top universities are looking for and can help you craft a compelling narrative.",
-    imageSrc: "/images/graphics/writing.svg",
-  },
-  {
-    title: "Application Assistance",
-    description:
-      "Navigating the Common App and other application portals can be confusing. Our mentors can guide you through the process, ensuring you meet all the requirements and deadlines.",
-    imageSrc: "/images/graphics/webinar.svg",
-  },
-  {
-    title: "University Selection Advice",
-    description:
-      "Choosing the right university is crucial. Get advice based on real student experiences and data-driven insights to match your academic and personal preferences with the best options.",
-    imageSrc: "/images/graphics/globe.svg",
-  },
-  {
-    title: "Scholarship Guidance",
-    description:
-      "Learn about scholarship opportunities and get help with applications to minimize your education costs.",
-    imageSrc: "/images/graphics/money.svg",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const Services = () => {
+  const { t } = useTranslation("services");
+  const services = [
+    {
+      title: t("essayReviews.title"),
+      description: t("essayReviews.description"),
+      imageSrc: "/images/graphics/writing.svg",
+    },
+    {
+      title: t("applicationAssistance.title"),
+      description: t("applicationAssistance.description"),
+      imageSrc: "/images/graphics/webinar.svg",
+    },
+    {
+      title: t("universitySelectionAdvice.title"),
+      description: t("universitySelectionAdvice.description"),
+      imageSrc: "/images/graphics/globe.svg",
+    },
+    {
+      title: t("scholarshipGuidance.title"),
+      description: t("scholarshipGuidance.description"),
+      imageSrc: "/images/graphics/money.svg",
+    },
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
